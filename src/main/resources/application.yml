@@ -1,1 +1,8 @@
-
+server:
+  port: 8081
+spring:
+  application:
+    name: recipe-manager
+  jpa:
+    generate-ddl: false
+    hibernate.ddl-auto: none
