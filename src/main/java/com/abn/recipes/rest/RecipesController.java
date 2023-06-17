@@ -6,9 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 // Rest Controller for Recipes
 @RestController
@@ -25,8 +23,28 @@ public class RecipesController {
     }
 
     //GET mapping to get recipe by id
+    @GetMapping("/{id}")
+    public RecipeModel getRecipe(@PathVariable Long id) {
+        return recipeService.getRecipe(id);
+    }
+
     //POST mapping to add recipe
+    @PostMapping
+    public RecipeModel addRecipe(@RequestBody RecipeModel recipeModel) {
+        return recipeService.saveRecipe(recipeModel);
+    }
+
     //PUT mapping to update recipe
-    //DELETE mapping to delete recipe
+    @PutMapping("/{id}")
+    public RecipeModel updateRecipe(@PathVariable Long id, @RequestBody RecipeModel recipeModel) {
+        return recipeService.updateRecipe(id, recipeModel);
+    }
+
+    //DELETE mapping to delete recipe by id
+    @DeleteMapping("/{id}")
+    public void deleteRecipe(@PathVariable Long id) {
+        recipeService.deleteRecipe(id);
+    }
+    
 
 }

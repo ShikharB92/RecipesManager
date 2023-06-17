@@ -12,6 +12,7 @@ public class RecipeEntityToModelTransformer implements Function<RecipeEntity, Re
             @Override
             public RecipeModel apply(RecipeEntity recipeEntity) {
                 return RecipeModel.builder()
+                        .id(recipeEntity.getId())
                         .name(recipeEntity.getName())
                         .ingredients(recipeEntity.getIngredients())
                         .instructions(recipeEntity.getInstructions())
