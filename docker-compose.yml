@@ -1,11 +1,11 @@
-version: '3'
+version: '1'
 services:
   postgres:
       container_name: recipes-db
       restart: always
       image: postgres
       ports:
-        - "5439:5432"
+        - "5432:5432"
       environment:
         - DEBUG=false
         - POSTGRES_USER=postgres
@@ -19,10 +19,10 @@ services:
           context: .
           dockerfile: Dockerfile
         ports:
-          - "8088:8080"
+          - "8080:8080"
         environment:
           SPRING_APPLICATION_NAME: recipes-manager
-          SPRING_PROFILES_ACTIVE: local
+          SPRING_PROFILES_ACTIVE: docker-local
         networks:
           - recipes-network
 networks:
