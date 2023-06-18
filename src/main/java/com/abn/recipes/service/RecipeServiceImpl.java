@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -55,5 +56,10 @@ public class RecipeServiceImpl implements RecipeService {
         recipeEntity.setCategory(recipeModel.getCategory());
         recipeEntity.setServings(recipeModel.getServings());
         return recipeEntityToModelTransformer.apply(recipeRepository.save(recipeEntity));
+    }
+
+    @Override
+    public Page<RecipeModel> findBySearchCriteria(Specification<RecipeEntity> spec, Pageable page) {
+        return recipeRepository.findAll(spec, page).map(recipeEntityToModelTransformer);
     }
 }

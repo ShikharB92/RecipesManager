@@ -1,8 +1,17 @@
 server:
   port: 8081
 spring:
-  application:
-    name: recipe-manager
   jpa:
-    generate-ddl: false
-    hibernate.ddl-auto: none
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    defer-datasource-initialization: true
+    generate-ddl: true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.HSQLDialect
+  datasource:
+    url: jdbc:hsqldb:mem:recipes-db
+    username: sa
+    password:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver

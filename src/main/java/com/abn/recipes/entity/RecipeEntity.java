@@ -6,8 +6,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.*;
 
-import java.util.Set;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +15,7 @@ import java.util.Set;
 public class RecipeEntity extends AbstractBaseEntity {
 
     private String name;
-    private Set<String> ingredients;
+    private String ingredients;
     private String instructions;
 
     @Enumerated(EnumType.STRING)
