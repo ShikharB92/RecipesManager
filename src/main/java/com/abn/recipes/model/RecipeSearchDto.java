@@ -11,5 +11,4 @@ import java.util.List;
 @AllArgsConstructor
 public class RecipeSearchDto {
     private List<SearchCriteria> searchCriteriaList;
-    private String dataOption;
 }

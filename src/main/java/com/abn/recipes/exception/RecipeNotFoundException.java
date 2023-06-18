@@ -1,6 +1,10 @@
 package com.abn.recipes.exception;
 
-public class RecipeNotFoundException extends RuntimeException{
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class RecipeNotFoundException extends RuntimeException {
 
     public RecipeNotFoundException(String message) {
         super(message);

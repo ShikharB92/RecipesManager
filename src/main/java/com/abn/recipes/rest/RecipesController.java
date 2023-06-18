@@ -55,7 +55,6 @@ public class RecipesController {
     //POST mapping to search recipe
     @PostMapping("/search")
     public Page<RecipeModel> searchEmployees(@PageableDefault Pageable pageable, @RequestBody RecipeSearchDto recipeSearchDto) {
-//        APIResponse apiResponse = new APIResponse();
         RecipeSpecificationBuilder builder = new RecipeSpecificationBuilder();
         List<SearchCriteria> criteriaList = recipeSearchDto.getSearchCriteriaList();
         if (criteriaList != null) {
@@ -65,12 +64,5 @@ public class RecipesController {
         }
 
         return recipeService.findBySearchCriteria(builder.build(), pageable);
-//        apiResponse.setData(employeePage.toList());
-//        apiResponse.setResponseCode(HttpStatus.OK);
-//        apiResponse.setMessage("Successfully retrieved employee
-//                record");
-//
-//        return new ResponseEntity<>(apiResponse,
-//                apiResponse.getResponseCode());
     }
 }
