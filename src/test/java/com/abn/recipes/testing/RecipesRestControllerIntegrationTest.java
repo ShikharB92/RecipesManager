@@ -54,7 +54,7 @@ public class RecipesRestControllerIntegrationTest {
 
     @Test
     public void get1Recipe_thenStatus200() throws Exception {
-        mvc.perform(get("/api/recipes/1").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/api/recipes/3").contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -73,7 +73,7 @@ public class RecipesRestControllerIntegrationTest {
     @Test
     public void updateRecipe_thenStatus200() throws Exception {
         RecipeModel recipe = RecipeModel.builder().category(Category.VEGETARIAN).servings(3).build();
-        mvc.perform(put("/api/recipes/1").contentType(MediaType.APPLICATION_JSON)
+        mvc.perform(put("/api/recipes/3").contentType(MediaType.APPLICATION_JSON)
                         .content(JsonUtil.toJson(recipe)))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -96,7 +96,7 @@ public class RecipesRestControllerIntegrationTest {
     @Test
     public void deleteRecipe_thenStatus200() throws Exception {
         RecipeModel recipe = RecipeModel.builder().category(Category.VEGETARIAN).servings(3).build();
-        mvc.perform(post("/api/recipes/1").contentType(MediaType.APPLICATION_JSON)
+        mvc.perform(delete("/api/recipes/1").contentType(MediaType.APPLICATION_JSON)
                         .content(JsonUtil.toJson(recipe)))
                 .andDo(print())
                 .andExpect(status().isOk());
